@@ -1,151 +1,142 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GeneTrace: Exposed Roots</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GeneTrace: Exposed Roots</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
   <style>
-body {
-    margin: 0;
-    font-family: 'Orbitron', sans-serif;
-    background: linear-gradient(to right, #ffecd2, #fcb69f);
-}
-
-header {
-    background: linear-gradient(to bottom, #a678de, #845ec2);
-    padding: 10px 40px;
-    border-radius: 0 0 20px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.nav-container {
-    width: 100%;
-    max-width: 1200px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.logo img {
-    height: 50px;
-}
-
-.menu-icon {
-    font-size: 30px;
-    color: white;
-    display: none;
-    cursor: pointer;
-}
-
-#menu-toggle {
-    display: none;
-}
-
-.nav-links {
-    list-style: none;
-    display: flex;
-    gap: 10px;
-}
-
-.nav-links li a {
-    text-decoration: none;
-    background: white;
-    color: #5e3f9f;
-    padding: 10px 20px;
-    border-radius: 10px;
-    font-weight: bold;
-}
-
-@media (max-width: 768px) {
-    .nav-links {
-        display: none;
-        flex-direction: column;
-        background: linear-gradient(to bottom, #a678de, #845ec2);
-        position: fixed;
-        top: 80px;
-        left: 0;
-        width: 70%;
-        height: 100%;
-        padding-top: 30px;
-        border-radius: 0 20px 20px 0;
-        transition: 0.3s;
+    body {
+      margin: 0;
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(to right, #ffecd2, #fcb69f);
     }
-    #menu-toggle:checked + .menu-icon + .nav-links {
-        display: flex;
-        animation: slideIn 0.3s ease forwards;
+    header {
+      background: linear-gradient(to bottom, #a678de, #845ec2);
+      padding: 10px 40px;
+      border-radius: 0 0 20px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header img {
+      height: 70px;
+    }
+    nav a {
+      background: white;
+      color: #845ec2;
+      padding: 8px 15px;
+      margin: 5px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
+      display: inline-block;
+    }
+    nav a:hover {
+      background: #f0f0f0;
+    }
+    .sidebar {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background: linear-gradient(to bottom, #a678de, #845ec2);
+      height: 100%;
+      width: 250px;
+      padding-top: 60px;
+      transition: 0.3s;
+      z-index: 1000;
+    }
+    .sidebar a {
+      display: block;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      font-size: 18px;
+    }
+    .sidebar a:hover {
+      background: #845ec2;
     }
     .menu-icon {
-        display: block;
+      display: none;
+      cursor: pointer;
+      flex-direction: column;
     }
-    @keyframes slideIn {
-        from {transform: translateX(-100%);}
-        to {transform: translateX(0);}
+    .menu-icon div {
+      width: 25px;
+      height: 3px;
+      background: white;
+      margin: 5px;
+      border-radius: 5px;
     }
-}
-</style>
+    .container {
+      background: white;
+      margin: 50px auto;
+      padding: 30px;
+      border-radius: 20px;
+      max-width: 500px;
+      text-align: center;
+    }
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+      }
+      .menu-icon {
+        display: flex;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
-
 <header>
-  <div class="nav-container">
-    <div class="logo">
-      <img src="GeneTrace_FinalLogo_Transparent.png" alt="GeneTrace Logo" style="height: 50px;">
-    </div>
-    <input type="checkbox" id="menu-toggle">
-    <label for="menu-toggle" class="menu-icon">&#9776;</label>
-
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About Us</a></li>
-      <li><a href="genetic.html">Genetic Breakdown</a></li>
-      <li><a href="match.html">Celebrity Match</a></li>
-      <li><a href="encrypt.html">Encryption</a></li>
-      <li><a href="chart.html">Accuracy</a></li>
-      <li><a href="tips.html">Security Tips</a></li>
-    </ul>
+  <img src="GeneTrace_FinalLogo_Transparent.png" alt="GeneTrace Logo">
+  <div class="menu-icon" onclick="toggleSidebar()">
+    <div></div>
+    <div></div>
+    <div></div>
   </div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About Us</a>
+    <a href="genetic.html">Genetic Breakdown</a>
+    <a href="match.html">Celebrity Match</a>
+    <a href="encrypt.html">Encryption</a>
+    <a href="chart.html">Accuracy</a>
+    <a href="tips.html">Security Tips</a>
+  </nav>
 </header>
 
+<div class="sidebar" id="sidebar">
+  <a href="index.html">Home</a>
+  <a href="about.html">About Us</a>
+  <a href="genetic.html">Genetic Breakdown</a>
+  <a href="match.html">Celebrity Match</a>
+  <a href="encrypt.html">Encryption</a>
+  <a href="chart.html">Accuracy</a>
+  <a href="tips.html">Security Tips</a>
+</div>
 
 <div class="container">
-    <h1>Welcome to GeneTrace 🧬</h1>
-    <p>Upload your DNA sample to begin your journey.</p>
-    <input type="file" id="dnaFile">
-    <button onclick="startShipping()">Submit</button>
-    <div id="shippingAnimation">Your sample is being shipped safely...</div>
+  <h1>Welcome to GeneTrace 🧬</h1>
+  <p>Upload your DNA sample to begin your journey.</p>
+  <input type="file" id="dnaFile">
+  <br><br>
+  <button onclick="submitSample()">Submit</button>
 </div>
-
-<div class="popup" id="popupBox" onclick="closePopup()">
-    <div class="popup-content" id="popupMessage">
-        ✅ Your result is ready!
-    </div>
-</div>
-
-
-
-
-
-
 
 <script>
-function startShipping() {
-    const shipping = document.getElementById('shippingAnimation');
-    shipping.style.display = 'block';
-    setTimeout(() => {
-        localStorage.setItem('sampleUploaded', 'true');
-        document.getElementById('popupBox').style.visibility = 'visible';
-    }, 3000);
-}
-function closePopup() {
-    document.getElementById('popupBox').style.visibility = 'hidden';
-}
-</script>
-</body>
+  function toggleSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    sidebar.style.display = sidebar.style.display === 'block' ? 'none' : 'block';
+  }
 
+  function submitSample() {
+    alert("Your sample is being shipped safely!\n\n✅ Your result is ready!");
+  }
+</script>
+
+</body>
 </html>
+
