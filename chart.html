@@ -3,94 +3,107 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accuracy Comparison</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(to right, #ffecd2, #fcb69f);
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            background: linear-gradient(to bottom, #a678de, #845ec2);
-            padding: 10px 40px;
-            border-radius: 0 0 20px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        header img {
-            height: 70px;
-        }
-        header nav a {
-            background: white;
-            color: #845ec2;
-            padding: 8px 15px;
-            margin: 0 5px;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 16px;
-        }
-        header nav a:hover {
-            background: #e0c2ff;
-        }
-        .content {
-            text-align: center;
-            margin-top: 50px;
-        }
-        select, input[type="text"], button {
-            padding: 10px;
-            margin: 10px;
-            font-size: 16px;
-            border-radius: 8px;
-            border: 1px solid #ccc;
-        }
-        button {
-            background-color: #845ec2;
-            color: white;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #a678de;
-        }
-        .popup {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: rgba(0,0,0,0.5);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            visibility: hidden;
-        }
-        .popup-content {
-            background: white;
-            padding: 30px 50px;
-            border-radius: 15px;
-            text-align: center;
-            font-size: 1.5em;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-        }
-    </style>
+  <style>
+body {
+    margin: 0;
+    font-family: 'Orbitron', sans-serif;
+    background: linear-gradient(to right, #ffecd2, #fcb69f);
+}
+
+header {
+    background: linear-gradient(to bottom, #a678de, #845ec2);
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0 0 20px 20px;
+}
+
+.nav-container {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.menu-icon {
+    font-size: 30px;
+    color: white;
+    display: none;
+    cursor: pointer;
+}
+
+#menu-toggle {
+    display: none;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 10px;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    background: white;
+    color: #5e3f9f;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        background: linear-gradient(to bottom, #a678de, #845ec2);
+        position: fixed;
+        top: 80px;
+        left: 0;
+        width: 70%;
+        height: 100%;
+        padding-top: 30px;
+        border-radius: 0 20px 20px 0;
+        transition: 0.3s;
+    }
+    #menu-toggle:checked + .menu-icon + .nav-links {
+        display: flex;
+        animation: slideIn 0.3s ease forwards;
+    }
+    .menu-icon {
+        display: block;
+    }
+    @keyframes slideIn {
+        from {transform: translateX(-100%);}
+        to {transform: translateX(0);}
+    }
+}
+</style>
 </head>
 <body>
 
 <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
-
-<header style="background: linear-gradient(to bottom, #a678de, #845ec2); padding: 10px 40px; border-radius: 0 0 20px 20px; display: flex; justify-content: space-between; align-items: center; font-family: 'Orbitron', sans-serif;">
-    <div>
-        <img src="GeneTrace_FinalLogo_Transparent.png" alt="GeneTrace Logo" style="height:70px;">
+<header>
+  <div class="nav-container">
+    <div class="logo">
+      <img src="GeneTrace_FinalLogo_Transparent.png" alt="GeneTrace Logo" style="height: 50px;">
     </div>
-    <nav>
-        <a href="index.html" style="background:white; color:#845ec2; padding:8px 15px; margin:0 5px; border-radius:10px; text-decoration:none; font-weight:bold; font-size:16px;">Home</a>
-        <a href="about.html" style="background:white; color:#845ec2; padding:8px 15px; margin:0 5px; border-radius:10px; text-decoration:none; font-weight:bold; font-size:16px;">About Us</a>
-        <a href="genetic.html" style="background:white; color:#845ec2; padding:8px 15px; margin:0 5px; border-radius:10px; text-decoration:none; font-weight:bold; font-size:16px;">Genetic Breakdown</a>
-        <a href="match.html" style="background:white; color:#845ec2; padding:8px 15px; margin:0 5px; border-radius:10px; text-decoration:none; font-weight:bold; font-size:16px;">Celebrity Match</a>
-        <a href="encrypt.html" style="background:white; color:#845ec2; padding:8px 15px; margin:0 5px; border-radius:10px; text-decoration:none; font-weight:bold; font-size:16px;">Encryption</a>
-        <a href="chart.html" style="background:white; color:#845ec2; padding:8px 15px; margin:0 5px; border-radius:10px; text-decoration:none; font-weight:bold; font-size:16px;">Accuracy</a>
-        <a href="tips.html" style="background:white; color:#845ec2; padding:8px 15px; margin:0 5px; border-radius:10px; text-decoration:none; font-weight:bold; font-size:16px;">Security Tips</a>
-    </nav>
+    <input type="checkbox" id="menu-toggle">
+    <label for="menu-toggle" class="menu-icon">&#9776;</label>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="genetic.html">Genetic Breakdown</a></li>
+      <li><a href="match.html">Celebrity Match</a></li>
+      <li><a href="encrypt.html">Encryption</a></li>
+      <li><a href="chart.html">Accuracy</a></li>
+      <li><a href="tips.html">Security Tips</a></li>
+    </ul>
+  </div>
 </header>
 <br>
 
