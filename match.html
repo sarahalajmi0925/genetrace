@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GeneTrace: Exposed Roots</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron&amp;display=swap" rel="stylesheet"/>
+<style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: 'Orbitron', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #ffecd2, #fcb69f);
+      color: #333;
+    }
+    header {
+      
+      color: #fff;
+      padding: 20px 0;
+      text-align: center;
+      font-size: 2em;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+    nav {
+      
+      text-align: center;
+      padding: 10px;
+    }
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+    .bar {
+      height: 30px;
+      background: linear-gradient(90deg, #00c9ff, #92fe9d);
+      border-radius: 6px;
+      margin-top: 10px;
+      padding-left: 10px;
+      line-height: 30px;
+    }
+    input, select, button {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    ul { padding-left: 20px; }
+    li::marker { content: "✔️ "; }
+  </style>
+</head>
+<body>
+<header style="background: linear-gradient(to bottom, #a678de, #845ec2); padding: 10px 40px; border-radius: 0 0 20px 20px; display: flex; justify-content: space-between; align-items: center; font-family: 'Orbitron', sans-serif;">
+    <div>
+        <img src="GeneTrace_FinalLogo_Transparent.png" alt="GeneTrace Logo" style="height:70px;">
+    </div>
+    <nav>
+        <a href="index.html" style="background:white; color:#845ec2; padding:8px 15px; margin:0 5px; border-radius:10px; text-decoration:none; font-weight:bold; font-size:16px;">Home</a>
+        <a href="about.html" style="background:white; color:#845ec2; padding:8px 15px; margin:0 5px; border-radius:10px; text-decoration:none; font-weight:bold; font-size:16px;">About Us</a>
+        <a href="genetic.html" style="background:white; color:#845ec2; padding:8px 15px; margin:0 5px; border-radius:10px; text-decoration:none; font-weight:bold; font-size:16px;">Genetic Breakdown</a>
+        <a href="match.html" style="background:white; color:#845ec2; padding:8px 15px; margin:0 5px; border-radius:10px; text-decoration:none; font-weight:bold; font-size:16px;">Celebrity Match</a>
+        <a href="encrypt.html" style="background:white; color:#845ec2; padding:8px 15px; margin:0 5px; border-radius:10px; text-decoration:none; font-weight:bold; font-size:16px;">Encryption</a>
+        <a href="chart.html" style="background:white; color:#845ec2; padding:8px 15px; margin:0 5px; border-radius:10px; text-decoration:none; font-weight:bold; font-size:16px;">Accuracy</a>
+        <a href="tips.html" style="background:white; color:#845ec2; padding:8px 15px; margin:0 5px; border-radius:10px; text-decoration:none; font-weight:bold; font-size:16px;">Security Tips</a>
+    </nav>
+</header>
+
+
+
+
+ >
+<div class="logo" style="text-align:center; margin-top: 20px;">
+</div>
+<div class="container">
+<h2>Celebrity Match</h2>
+<select id="providerSelect" onchange="celebrityMatch()">
+<option value="">Select a provider</option>
+<option value="23andMe">23andMe</option>
+<option value="AncestryDNA">AncestryDNA</option>
+<option value="MyHeritage">MyHeritage</option>
+<option value="LivingDNA">LivingDNA</option>
+</select>
+<p id="matchResult"></p>
+</div>
+
+
+
+<script>
+if (localStorage.getItem('sampleUploaded') !== 'true') {
+    alert("Please upload a sample and wait for confirmation first.");
+    window.location.href = "index.html";
+}
+
+function celebrityMatch() {
+    const provider = document.getElementById("providerSelect").value;
+    const matchResult = document.getElementById("matchResult");
+    const celebPhoto = document.getElementById("celebPhoto");
+    const celebResult = document.getElementById("celebResult");
+
+    const matches = {
+        "23andMe": {name: "Chris Evans", year: "2019", photo: "GeneTrace_FinalLogo_Transparent.png"},
+        "AncestryDNA": {name: "Zendaya", year: "2020", photo: "GeneTrace_FinalLogo_Transparent.png"},
+        "MyHeritage": {name: "Tom Holland", year: "2021", photo: "GeneTrace_FinalLogo_Transparent.png"},
+        "LivingDNA": {name: "Scarlett Johansson", year: "2018", photo: "GeneTrace_FinalLogo_Transparent.png"}
+    };
+
+    if (provider && matches[provider]) {
+        matchResult.innerText = `Your DNA twin revealed: ${matches[provider].name} (Leak: ${matches[provider].year})`;
+        celebResult.innerText = `${matches[provider].name} - Leak Year: ${matches[provider].year}`;
+        celebPhoto.src = matches[provider].photo;
+        celebPhoto.style.display = "block";
+    } else {
+        matchResult.innerText = "";
+        celebResult.innerText = "";
+        celebPhoto.style.display = "none";
+    }
+}
+</script>
+
+</body>
+</html>
