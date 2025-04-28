@@ -1,174 +1,141 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Genetic Breakdown</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-   <style>
-body {
-    margin: 0;
-    font-family: 'Orbitron', sans-serif;
-    background: linear-gradient(to right, #ffecd2, #fcb69f);
-}
-
-header {
-    background: linear-gradient(to bottom, #a678de, #845ec2);
-    padding: 10px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 0 0 20px 20px;
-}
-
-.nav-container {
-    width: 100%;
-    max-width: 1200px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.menu-icon {
-    font-size: 30px;
-    color: white;
-    display: none;
-    cursor: pointer;
-}
-
-#menu-toggle {
-    display: none;
-}
-
-.nav-links {
-    list-style: none;
-    display: flex;
-    gap: 10px;
-}
-
-.nav-links li a {
-    text-decoration: none;
-    background: white;
-    color: #5e3f9f;
-    padding: 10px 20px;
-    border-radius: 10px;
-    font-weight: bold;
-}
-
-@media (max-width: 768px) {
-    .nav-links {
-        display: none;
-        flex-direction: column;
-        background: linear-gradient(to bottom, #a678de, #845ec2);
-        position: fixed;
-        top: 80px;
-        left: 0;
-        width: 70%;
-        height: 100%;
-        padding-top: 30px;
-        border-radius: 0 20px 20px 0;
-        transition: 0.3s;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GeneTrace: Genetic Breakdown</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(to right, #ffecd2, #fcb69f);
     }
-    #menu-toggle:checked + .menu-icon + .nav-links {
-        display: flex;
-        animation: slideIn 0.3s ease forwards;
+    header {
+      background: linear-gradient(to bottom, #a678de, #845ec2);
+      padding: 10px 40px;
+      border-radius: 0 0 20px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header img {
+      height: 70px;
+    }
+    nav a {
+      background: white;
+      color: #845ec2;
+      padding: 8px 15px;
+      margin: 5px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
+      display: inline-block;
+    }
+    nav a:hover {
+      background: #f0f0f0;
+    }
+    .sidebar {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background: linear-gradient(to bottom, #a678de, #845ec2);
+      height: 100%;
+      width: 250px;
+      padding-top: 60px;
+      transition: 0.3s;
+      z-index: 1000;
+    }
+    .sidebar a {
+      display: block;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      font-size: 18px;
+    }
+    .sidebar a:hover {
+      background: #845ec2;
     }
     .menu-icon {
-        display: block;
+      display: none;
+      cursor: pointer;
+      flex-direction: column;
     }
-    @keyframes slideIn {
-        from {transform: translateX(-100%);}
-        to {transform: translateX(0);}
+    .menu-icon div {
+      width: 25px;
+      height: 3px;
+      background: white;
+      margin: 5px;
+      border-radius: 5px;
     }
-}
-</style>
+    .content-box {
+      background: white;
+      margin: 50px auto;
+      padding: 30px;
+      border-radius: 20px;
+      max-width: 700px;
+      text-align: center;
+    }
+    .genetic-chart {
+      margin-top: 20px;
+    }
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+      }
+      .menu-icon {
+        display: flex;
+      }
+    }
+  </style>
 </head>
 <body>
+
 <header>
-  <div class="nav-container">
-    <div class="logo">
-      <img src="GeneTrace_FinalLogo_Transparent.png" alt="GeneTrace Logo" style="height: 50px;">
-    </div>
-    <input type="checkbox" id="menu-toggle">
-    <label for="menu-toggle" class="menu-icon">&#9776;</label>
-
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About Us</a></li>
-      <li><a href="genetic.html">Genetic Breakdown</a></li>
-      <li><a href="match.html">Celebrity Match</a></li>
-      <li><a href="encrypt.html">Encryption</a></li>
-      <li><a href="chart.html">Accuracy</a></li>
-      <li><a href="tips.html">Security Tips</a></li>
-    </ul>
+  <img src="GeneTrace_FinalLogo_Transparent.png" alt="GeneTrace Logo">
+  <div class="menu-icon" onclick="toggleSidebar()">
+    <div></div>
+    <div></div>
+    <div></div>
   </div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About Us</a>
+    <a href="genetic.html">Genetic Breakdown</a>
+    <a href="match.html">Celebrity Match</a>
+    <a href="encrypt.html">Encryption</a>
+    <a href="chart.html">Accuracy</a>
+    <a href="tips.html">Security Tips</a>
+  </nav>
 </header>
-<div class="chart-container">
-    <h1>Your Genetic Region Breakdown</h1>
-    <canvas id="geneticPieChart" width="400" height="400"></canvas>
+
+<div class="sidebar" id="sidebar">
+  <a href="index.html">Home</a>
+  <a href="about.html">About Us</a>
+  <a href="genetic.html">Genetic Breakdown</a>
+  <a href="match.html">Celebrity Match</a>
+  <a href="encrypt.html">Encryption</a>
+  <a href="chart.html">Accuracy</a>
+  <a href="tips.html">Security Tips</a>
 </div>
 
-<div class="relatives-container">
-    <h2>Distinct Relatives</h2>
-    <div class="relative-card"><h3>James Smith</h3><p>Second Cousin</p></div>
-    <div class="relative-card"><h3>Linda Johnson</h3><p>Third Cousin</p></div>
-    <div class="relative-card"><h3>Robert Williams</h3><p>Aunt</p></div>
-    <div class="relative-card"><h3>Patricia Brown</h3><p>First Cousin</p></div>
+<div class="content-box">
+  <h1>Genetic Breakdown</h1>
+  <p>Explore your unique genetic signature:</p>
+  <div class="genetic-chart">
+    <img src="gene_trace_homepage_welcome.png" alt="Genetic Breakdown Chart" style="width:100%; border-radius:15px;">
+  </div>
 </div>
-
 
 <script>
-function generateRandomBreakdown() {
-    const allRegions = ["European", "Middle Eastern", "East Asian", "African", "Native American", "South Asian", "Oceanian", "Central Asian"];
-    const selectedRegions = [];
-    const numberOfRegions = Math.floor(Math.random() * 5) + 4; // 4 to 8
-
-    while (selectedRegions.length < numberOfRegions) {
-        const region = allRegions[Math.floor(Math.random() * allRegions.length)];
-        if (!selectedRegions.includes(region)) {
-            selectedRegions.push(region);
-        }
-    }
-
-    let percentages = [];
-    let remaining = 100;
-    for (let i = 0; i < selectedRegions.length - 1; i++) {
-        let percent = Math.floor(Math.random() * (remaining / 2)) + 5;
-        percentages.push(percent);
-        remaining -= percent;
-    }
-    percentages.push(remaining);
-
-    const ctx = document.getElementById('geneticPieChart').getContext('2d');
-    new Chart(ctx, {
-        type: 'pie',
-        data: {
-            labels: selectedRegions,
-            datasets: [{
-                data: percentages,
-                backgroundColor: [
-                    '#ff9999', '#66b3ff', '#99ff99', '#ffcc99',
-                    '#c2c2f0', '#ffb3e6', '#c2f0c2', '#f7c6c7'
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    position: 'bottom'
-                }
-            }
-        }
-    });
-}
-
-window.onload = generateRandomBreakdown;
+  function toggleSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    sidebar.style.display = sidebar.style.display === 'block' ? 'none' : 'block';
+  }
 </script>
-
 
 </body>
 </html>
+
