@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GeneTrace</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+  <style>
+    body { margin: 0; font-family: 'Orbitron', sans-serif; text-align: center; padding: 20px; background: linear-gradient(to right, #ffecd2, #fcb69f); }
+    header { background: linear-gradient(to bottom, #a678de, #845ec2); padding: 10px 20px; display: flex; align-items: center; justify-content: center; border-radius: 0 0 20px 20px; }
+    .nav-container { width: 100%; max-width: 1200px; display: flex; align-items: center; justify-content: space-between; }
+    .menu-icon { font-size: 30px; color: white; display: none; cursor: pointer; }
+    #menu-toggle { display: none; }
+    .nav-links { list-style: none; display: flex; gap: 10px; }
+    .nav-links li a { text-decoration: none; background: white; color: purple; padding: 8px 14px; border-radius: 10px; }
+    @media (max-width: 768px) {
+      .nav-links { display: none; flex-direction: column; background: #a678de; margin-top: 10px; border-radius: 10px; }
+      #menu-toggle:checked + .menu-icon + .nav-links { display: flex; animation: slideDown 0.3s ease; }
+      .menu-icon { display: block; }
+      @keyframes slideDown { from {opacity: 0; transform: translateY(-10px);} to {opacity: 1; transform: translateY(0);} }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="nav-container">
+    <div class="logo">
+      <img src="GeneTrace_FinalLogo_Transparent.png" alt="GeneTrace Logo" style="height: 50px;">
+    </div>
+    <input type="checkbox" id="menu-toggle">
+    <label for="menu-toggle" class="menu-icon">&#9776;</label>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="genetic.html">Genetic Breakdown</a></li>
+      <li><a href="match.html">Celebrity Match</a></li>
+      <li><a href="encrypt.html">Encryption</a></li>
+      <li><a href="chart.html">Accuracy</a></li>
+      <li><a href="tips.html">Security Tips</a></li>
+    </ul>
+  </div>
+</header>
+<h1>Welcome to Genetic</h1></body></html>
