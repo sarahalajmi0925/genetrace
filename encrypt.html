@@ -1,172 +1,170 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>GeneTrace: Exposed Roots</title>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron&amp;display=swap" rel="stylesheet"/>
-<style>
-body {
-    margin: 0;
-    font-family: 'Orbitron', sans-serif;
-    background: linear-gradient(to right, #ffecd2, #fcb69f);
-}
-
-header {
-    background: linear-gradient(to bottom, #a678de, #845ec2);
-    padding: 10px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 0 0 20px 20px;
-}
-
-.nav-container {
-    width: 100%;
-    max-width: 1200px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.menu-icon {
-    font-size: 30px;
-    color: white;
-    display: none;
-    cursor: pointer;
-}
-
-#menu-toggle {
-    display: none;
-}
-
-.nav-links {
-    list-style: none;
-    display: flex;
-    gap: 10px;
-}
-
-.nav-links li a {
-    text-decoration: none;
-    background: white;
-    color: #5e3f9f;
-    padding: 10px 20px;
-    border-radius: 10px;
-    font-weight: bold;
-}
-
-@media (max-width: 768px) {
-    .nav-links {
-        display: none;
-        flex-direction: column;
-        background: linear-gradient(to bottom, #a678de, #845ec2);
-        position: fixed;
-        top: 80px;
-        left: 0;
-        width: 70%;
-        height: 100%;
-        padding-top: 30px;
-        border-radius: 0 20px 20px 0;
-        transition: 0.3s;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GeneTrace: Encrypt Your DNA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(to right, #ffecd2, #fcb69f);
     }
-    #menu-toggle:checked + .menu-icon + .nav-links {
-        display: flex;
-        animation: slideIn 0.3s ease forwards;
+    header {
+      background: linear-gradient(to bottom, #a678de, #845ec2);
+      padding: 10px 40px;
+      border-radius: 0 0 20px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header img {
+      height: 70px;
+    }
+    nav a {
+      background: white;
+      color: #845ec2;
+      padding: 8px 15px;
+      margin: 5px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
+      display: inline-block;
+    }
+    nav a:hover {
+      background: #f0f0f0;
+    }
+    .sidebar {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background: linear-gradient(to bottom, #a678de, #845ec2);
+      height: 100%;
+      width: 250px;
+      padding-top: 60px;
+      transition: 0.3s;
+      z-index: 1000;
+    }
+    .sidebar a {
+      display: block;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      font-size: 18px;
+    }
+    .sidebar a:hover {
+      background: #845ec2;
     }
     .menu-icon {
-        display: block;
+      display: none;
+      cursor: pointer;
+      flex-direction: column;
     }
-    @keyframes slideIn {
-        from {transform: translateX(-100%);}
-        to {transform: translateX(0);}
+    .menu-icon div {
+      width: 25px;
+      height: 3px;
+      background: white;
+      margin: 5px;
+      border-radius: 5px;
     }
-}
-</style>
+    .content-box {
+      background: white;
+      margin: 50px auto;
+      padding: 30px;
+      border-radius: 20px;
+      max-width: 700px;
+      text-align: center;
+    }
+    input[type="text"] {
+      width: 80%;
+      padding: 10px;
+      margin-top: 20px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 10px;
+      border: none;
+      background-color: #845ec2;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #6b49a1;
+    }
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+      }
+      .menu-icon {
+        display: flex;
+      }
+    }
+  </style>
 </head>
 <body>
-<header>
-  <div class="nav-container">
-    <div class="logo">
-      <img src="GeneTrace_FinalLogo_Transparent.png" alt="GeneTrace Logo" style="height: 50px;">
-    </div>
-    <input type="checkbox" id="menu-toggle">
-    <label for="menu-toggle" class="menu-icon">&#9776;</label>
 
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About Us</a></li>
-      <li><a href="genetic.html">Genetic Breakdown</a></li>
-      <li><a href="match.html">Celebrity Match</a></li>
-      <li><a href="encrypt.html">Encryption</a></li>
-      <li><a href="chart.html">Accuracy</a></li>
-      <li><a href="tips.html">Security Tips</a></li>
-    </ul>
+<header>
+  <img src="GeneTrace_FinalLogo_Transparent.png" alt="GeneTrace Logo">
+  <div class="menu-icon" onclick="toggleSidebar()">
+    <div></div>
+    <div></div>
+    <div></div>
   </div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About Us</a>
+    <a href="genetic.html">Genetic Breakdown</a>
+    <a href="match.html">Celebrity Match</a>
+    <a href="encrypt.html">Encryption</a>
+    <a href="chart.html">Accuracy</a>
+    <a href="tips.html">Security Tips</a>
+  </nav>
 </header>
-<div class="logo" style="text-align:center; margin-top: 20px;">
+
+<div class="sidebar" id="sidebar">
+  <a href="index.html">Home</a>
+  <a href="about.html">About Us</a>
+  <a href="genetic.html">Genetic Breakdown</a>
+  <a href="match.html">Celebrity Match</a>
+  <a href="encrypt.html">Encryption</a>
+  <a href="chart.html">Accuracy</a>
+  <a href="tips.html">Security Tips</a>
 </div>
-<div class="container">
-<h2>Encrypt Fake DNA</h2>
-<select id="encryptionMethod" style="margin-bottom: 10px; padding: 5px;">
-    <option value="Caesar">Caesar</option>
-    <option value="Reverse">Reverse</option>
-    <option value="Base64">Base64</option>
-</select>
-<input id="dnaInput" placeholder="Enter fake DNA code (e.g. AGCT)" type="text"/>
-<div id="decryptedOutput" style="margin-top: 10px; font-weight: bold;"></div>
-<button onclick="copyEncryptedDNA()">Copy Encrypted DNA</button>
-<p id="encryptResult"></p>
+
+<div class="content-box">
+  <h1>Encrypt Your DNA</h1>
+  <p>Protect your genetic information with encryption:</p>
+  <input type="text" id="dnaInput" placeholder="Enter your DNA sequence (e.g., ATCG)">
+  <br>
+  <button onclick="encryptDNA()">Encrypt</button>
+  <p id="encryptedResult" style="margin-top: 20px; font-weight: bold;"></p>
 </div>
 
 <script>
-if (localStorage.getItem('sampleUploaded') !== 'true') {
-    alert("Please upload a sample and wait for confirmation first.");
-    window.location.href = "index.html";
-}
+  function toggleSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    sidebar.style.display = sidebar.style.display === 'block' ? 'none' : 'block';
+  }
 
-function encryptDNA() {
-    var input = document.getElementById("dnaInput").value.trim();
-    var method = document.getElementById("encryptionMethod").value;
-    var output = "";
-
-    if (!input) {
-        document.getElementById("decryptedOutput").innerText = "";
-        return;
+  function encryptDNA() {
+    const dna = document.getElementById('dnaInput').value.trim();
+    if (dna === '') {
+      alert('Please enter your DNA sequence.');
+      return;
     }
-
-    if (method === "Caesar") {
-        output = input.split('').map(char => {
-            if ('ATCG'.includes(char.toUpperCase())) {
-                const mapping = { 'A': 'C', 'T': 'G', 'C': 'T', 'G': 'A' };
-                return mapping[char.toUpperCase()];
-            } else {
-                return char;
-            }
-        }).join('');
-    } else if (method === "Reverse") {
-        output = input.split('').reverse().join('');
-    } else if (method === "Base64") {
-        output = btoa(input);
-    }
-
-    document.getElementById("decryptedOutput").innerText = output;
-}
-
-function copyEncryptedDNA() {
-    var text = document.getElementById("decryptedOutput").innerText;
-    if (!text) return;
-    navigator.clipboard.writeText(text).then(function() {
-        alert("Encrypted DNA copied to clipboard!");
-    }, function(err) {
-        console.error('Async: Could not copy text: ', err);
-    });
-}
-
-document.getElementById("dnaInput").addEventListener("input", encryptDNA);
-document.getElementById("encryptionMethod").addEventListener("change", encryptDNA);
+    const encrypted = dna.split('').reverse().join('');  // simple fake encryption: reversed
+    document.getElementById('encryptedResult').innerText = "Encrypted DNA: " + encrypted;
+  }
 </script>
 
 </body>
 </html>
+
