@@ -1,133 +1,151 @@
-
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>GeneTrace: Exposed Roots</title>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron&amp;display=swap" rel="stylesheet"/>
-<style>
-body {
-    margin: 0;
-    font-family: 'Orbitron', sans-serif;
-    background: linear-gradient(to right, #ffecd2, #fcb69f);
-}
-
-header {
-    background: linear-gradient(to bottom, #a678de, #845ec2);
-    padding: 10px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 0 0 20px 20px;
-}
-
-.nav-container {
-    width: 100%;
-    max-width: 1200px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.menu-icon {
-    font-size: 30px;
-    color: white;
-    display: none;
-    cursor: pointer;
-}
-
-#menu-toggle {
-    display: none;
-}
-
-.nav-links {
-    list-style: none;
-    display: flex;
-    gap: 10px;
-}
-
-.nav-links li a {
-    text-decoration: none;
-    background: white;
-    color: #5e3f9f;
-    padding: 10px 20px;
-    border-radius: 10px;
-    font-weight: bold;
-}
-
-@media (max-width: 768px) {
-    .nav-links {
-        display: none;
-        flex-direction: column;
-        background: linear-gradient(to bottom, #a678de, #845ec2);
-        position: fixed;
-        top: 80px;
-        left: 0;
-        width: 70%;
-        height: 100%;
-        padding-top: 30px;
-        border-radius: 0 20px 20px 0;
-        transition: 0.3s;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GeneTrace: Security Tips</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(to right, #ffecd2, #fcb69f);
     }
-    #menu-toggle:checked + .menu-icon + .nav-links {
-        display: flex;
-        animation: slideIn 0.3s ease forwards;
+    header {
+      background: linear-gradient(to bottom, #a678de, #845ec2);
+      padding: 10px 40px;
+      border-radius: 0 0 20px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header img {
+      height: 70px;
+    }
+    nav a {
+      background: white;
+      color: #845ec2;
+      padding: 8px 15px;
+      margin: 5px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
+      display: inline-block;
+    }
+    nav a:hover {
+      background: #f0f0f0;
+    }
+    .sidebar {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background: linear-gradient(to bottom, #a678de, #845ec2);
+      height: 100%;
+      width: 250px;
+      padding-top: 60px;
+      transition: 0.3s;
+      z-index: 1000;
+    }
+    .sidebar a {
+      display: block;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      font-size: 18px;
+    }
+    .sidebar a:hover {
+      background: #845ec2;
     }
     .menu-icon {
-        display: block;
+      display: none;
+      cursor: pointer;
+      flex-direction: column;
     }
-    @keyframes slideIn {
-        from {transform: translateX(-100%);}
-        to {transform: translateX(0);}
+    .menu-icon div {
+      width: 25px;
+      height: 3px;
+      background: white;
+      margin: 5px;
+      border-radius: 5px;
     }
-}
-</style>
+    .content-box {
+      background: white;
+      margin: 50px auto;
+      padding: 30px;
+      border-radius: 20px;
+      max-width: 700px;
+      text-align: center;
+    }
+    ul {
+      text-align: left;
+      padding-left: 40px;
+      margin-top: 20px;
+    }
+    li {
+      margin-bottom: 10px;
+    }
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+      }
+      .menu-icon {
+        display: flex;
+      }
+    }
+  </style>
 </head>
 <body>
-<header>
-  <div class="nav-container">
-    <div class="logo">
-      <img src="GeneTrace_FinalLogo_Transparent.png" alt="GeneTrace Logo" style="height: 50px;">
-    </div>
-    <input type="checkbox" id="menu-toggle">
-    <label for="menu-toggle" class="menu-icon">&#9776;</label>
 
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About Us</a></li>
-      <li><a href="genetic.html">Genetic Breakdown</a></li>
-      <li><a href="match.html">Celebrity Match</a></li>
-      <li><a href="encrypt.html">Encryption</a></li>
-      <li><a href="chart.html">Accuracy</a></li>
-      <li><a href="tips.html">Security Tips</a></li>
-    </ul>
+<header>
+  <img src="GeneTrace_FinalLogo_Transparent.png" alt="GeneTrace Logo">
+  <div class="menu-icon" onclick="toggleSidebar()">
+    <div></div>
+    <div></div>
+    <div></div>
   </div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About Us</a>
+    <a href="genetic.html">Genetic Breakdown</a>
+    <a href="match.html">Celebrity Match</a>
+    <a href="encrypt.html">Encryption</a>
+    <a href="chart.html">Accuracy</a>
+    <a href="tips.html">Security Tips</a>
+  </nav>
 </header>
 
-<div class="logo" style="text-align:center; margin-top: 20px;">
-</div>
-<div class="container">
-<h2>Security Tips</h2>
-<ul>
-<li>Download your raw DNA data and store it securely.</li>
-<li>Never upload your full name with your DNA data.</li>
-<li>Use providers that offer strong encryption.</li>
-<li>Avoid sharing results on social media.</li>
-<li>Opt out of data sharing whenever possible.</li>
-</ul>
+<div class="sidebar" id="sidebar">
+  <a href="index.html">Home</a>
+  <a href="about.html">About Us</a>
+  <a href="genetic.html">Genetic Breakdown</a>
+  <a href="match.html">Celebrity Match</a>
+  <a href="encrypt.html">Encryption</a>
+  <a href="chart.html">Accuracy</a>
+  <a href="tips.html">Security Tips</a>
 </div>
 
-
+<div class="content-box">
+  <h1>Security Tips</h1>
+  <p>Protect your genetic identity by following these cybersecurity tips:</p>
+  <ul>
+    <li>Use strong, unique passwords for your DNA accounts.</li>
+    <li>Enable two-factor authentication where available.</li>
+    <li>Be cautious when sharing your DNA information online.</li>
+    <li>Choose reputable genetic testing providers.</li>
+    <li>Encrypt your DNA data when storing it digitally.</li>
+    <li>Understand the terms of service and privacy policies of DNA companies.</li>
+  </ul>
+</div>
 
 <script>
-if (localStorage.getItem('sampleUploaded') !== 'true') {
-    alert("Please upload a sample and wait for confirmation first.");
-    window.location.href = "index.html";
-}
+  function toggleSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    sidebar.style.display = sidebar.style.display === 'block' ? 'none' : 'block';
+  }
 </script>
 
 </body>
 </html>
+
