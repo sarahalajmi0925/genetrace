@@ -1,178 +1,182 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accuracy Comparison</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GeneTrace: Accuracy Chart</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
   <style>
-body {
-    margin: 0;
-    font-family: 'Orbitron', sans-serif;
-    background: linear-gradient(to right, #ffecd2, #fcb69f);
-}
-
-header {
-    background: linear-gradient(to bottom, #a678de, #845ec2);
-    padding: 10px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 0 0 20px 20px;
-}
-
-.nav-container {
-    width: 100%;
-    max-width: 1200px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.menu-icon {
-    font-size: 30px;
-    color: white;
-    display: none;
-    cursor: pointer;
-}
-
-#menu-toggle {
-    display: none;
-}
-
-.nav-links {
-    list-style: none;
-    display: flex;
-    gap: 10px;
-}
-
-.nav-links li a {
-    text-decoration: none;
-    background: white;
-    color: #5e3f9f;
-    padding: 10px 20px;
-    border-radius: 10px;
-    font-weight: bold;
-}
-
-@media (max-width: 768px) {
-    .nav-links {
-        display: none;
-        flex-direction: column;
-        background: linear-gradient(to bottom, #a678de, #845ec2);
-        position: fixed;
-        top: 80px;
-        left: 0;
-        width: 70%;
-        height: 100%;
-        padding-top: 30px;
-        border-radius: 0 20px 20px 0;
-        transition: 0.3s;
+    body {
+      margin: 0;
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(to right, #ffecd2, #fcb69f);
     }
-    #menu-toggle:checked + .menu-icon + .nav-links {
-        display: flex;
-        animation: slideIn 0.3s ease forwards;
+    header {
+      background: linear-gradient(to bottom, #a678de, #845ec2);
+      padding: 10px 40px;
+      border-radius: 0 0 20px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header img {
+      height: 70px;
+    }
+    nav a {
+      background: white;
+      color: #845ec2;
+      padding: 8px 15px;
+      margin: 5px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
+      display: inline-block;
+    }
+    nav a:hover {
+      background: #f0f0f0;
+    }
+    .sidebar {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background: linear-gradient(to bottom, #a678de, #845ec2);
+      height: 100%;
+      width: 250px;
+      padding-top: 60px;
+      transition: 0.3s;
+      z-index: 1000;
+    }
+    .sidebar a {
+      display: block;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      font-size: 18px;
+    }
+    .sidebar a:hover {
+      background: #845ec2;
     }
     .menu-icon {
-        display: block;
+      display: none;
+      cursor: pointer;
+      flex-direction: column;
     }
-    @keyframes slideIn {
-        from {transform: translateX(-100%);}
-        to {transform: translateX(0);}
+    .menu-icon div {
+      width: 25px;
+      height: 3px;
+      background: white;
+      margin: 5px;
+      border-radius: 5px;
     }
-}
-</style>
+    .content-box {
+      background: white;
+      margin: 50px auto;
+      padding: 30px;
+      border-radius: 20px;
+      max-width: 700px;
+      text-align: center;
+    }
+    input[type="text"], select {
+      width: 80%;
+      padding: 10px;
+      margin-top: 20px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 10px;
+      border: none;
+      background-color: #845ec2;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #6b49a1;
+    }
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+      }
+      .menu-icon {
+        display: flex;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
 <header>
-  <div class="nav-container">
-    <div class="logo">
-      <img src="GeneTrace_FinalLogo_Transparent.png" alt="GeneTrace Logo" style="height: 50px;">
-    </div>
-    <input type="checkbox" id="menu-toggle">
-    <label for="menu-toggle" class="menu-icon">&#9776;</label>
-
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About Us</a></li>
-      <li><a href="genetic.html">Genetic Breakdown</a></li>
-      <li><a href="match.html">Celebrity Match</a></li>
-      <li><a href="encrypt.html">Encryption</a></li>
-      <li><a href="chart.html">Accuracy</a></li>
-      <li><a href="tips.html">Security Tips</a></li>
-    </ul>
+  <img src="GeneTrace_FinalLogo_Transparent.png" alt="GeneTrace Logo">
+  <div class="menu-icon" onclick="toggleSidebar()">
+    <div></div>
+    <div></div>
+    <div></div>
   </div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About Us</a>
+    <a href="genetic.html">Genetic Breakdown</a>
+    <a href="match.html">Celebrity Match</a>
+    <a href="encrypt.html">Encryption</a>
+    <a href="chart.html">Accuracy</a>
+    <a href="tips.html">Security Tips</a>
+  </nav>
 </header>
-<br>
 
-
-
-
-<div class="content">
-    <h2>Enter your DNA Sequence and Select a Provider</h2>
-    <input type="text" id="dnaInput" placeholder="Enter DNA Sequence">
-    <br>
-    <select id="providerSelect">
-        <option value="23andMe">23andMe</option>
-        <option value="AncestryDNA">AncestryDNA</option>
-        <option value="MyHeritage">MyHeritage</option>
-        <option value="FamilyTreeDNA">FamilyTreeDNA</option>
-        <option value="LivingDNA">LivingDNA</option>
-    </select>
-    <br>
-    <button onclick="compareAccuracy()">Compare Accuracy</button>
+<div class="sidebar" id="sidebar">
+  <a href="index.html">Home</a>
+  <a href="about.html">About Us</a>
+  <a href="genetic.html">Genetic Breakdown</a>
+  <a href="match.html">Celebrity Match</a>
+  <a href="encrypt.html">Encryption</a>
+  <a href="chart.html">Accuracy</a>
+  <a href="tips.html">Security Tips</a>
 </div>
 
-<div class="popup" id="popupBox" onclick="closePopup()">
-    <div class="popup-content" id="popupMessage">
-        ✅ Accuracy is acceptable!
-    </div>
+<div class="content-box">
+  <h1>DNA Provider Accuracy</h1>
+  <p>Check the accuracy rate of your selected DNA test provider:</p>
+  <select id="providerSelect">
+    <option value="">Select Provider</option>
+    <option value="AncestryDNA">AncestryDNA</option>
+    <option value="23andMe">23andMe</option>
+    <option value="MyHeritage">MyHeritage</option>
+  </select>
+  <br>
+  <button onclick="checkAccuracy()">Check Accuracy</button>
+  <p id="accuracyResult" style="margin-top: 20px; font-weight: bold;"></p>
 </div>
 
 <script>
-function compareAccuracy() {
-    let dna = document.getElementById('dnaInput').value.trim();
-    if (dna === "") {
-        showPopup("❗ Please enter a DNA sequence first.");
-        return;
+  function toggleSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    sidebar.style.display = sidebar.style.display === 'block' ? 'none' : 'block';
+  }
+
+  function checkAccuracy() {
+    const provider = document.getElementById('providerSelect').value;
+    if (provider === "") {
+      alert('Please select a DNA provider first.');
+      return;
     }
-
-    let selectedProvider = document.getElementById('providerSelect').value;
-
-    // Simulated provider accuracies (randomly)
-    let providers = {
-        "23andMe": Math.random() * 100,
-        "AncestryDNA": Math.random() * 100,
-        "MyHeritage": Math.random() * 100,
-        "FamilyTreeDNA": Math.random() * 100,
-        "LivingDNA": Math.random() * 100
-    };
-
-    let selectedAccuracy = providers[selectedProvider];
-    let otherAccuracies = Object.keys(providers)
-                                .filter(p => p !== selectedProvider)
-                                .map(p => providers[p]);
-
-    let isInaccurate = otherAccuracies.some(acc => Math.abs(acc - selectedAccuracy) > 10);
-
-    if (isInaccurate) {
-        showPopup("⚠️ This provider is not accurate or is giving misleading information!");
-    } else {
-        showPopup("✅ The provider's accuracy is acceptable.");
+    let accuracy = "";
+    if (provider === "AncestryDNA") {
+      accuracy = "98%";
+    } else if (provider === "23andMe") {
+      accuracy = "96%";
+    } else if (provider === "MyHeritage") {
+      accuracy = "94%";
     }
-}
-
-function showPopup(message) {
-    document.getElementById('popupMessage').innerText = message;
-    document.getElementById('popupBox').style.visibility = 'visible';
-}
-
-function closePopup() {
-    document.getElementById('popupBox').style.visibility = 'hidden';
-}
+    document.getElementById('accuracyResult').innerText = "Accuracy Rate: " + accuracy;
+  }
 </script>
 
 </body>
 </html>
+
